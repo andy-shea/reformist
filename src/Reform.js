@@ -79,6 +79,7 @@ class Reform extends Component {
         values,
         setErrors: this.setErrors,
         setSubmitting: this.setSubmitting,
+        resetForm: this.resetForm,
         ...props
       },
       findForm(event.target)
