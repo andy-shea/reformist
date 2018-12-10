@@ -1,13 +1,13 @@
 import React from 'react';
 import ReformContext from './ReformContext';
 
-function Form({children, ...props}) {
+function Form({children, component: Component = 'form', ...props}) {
   return (
     <ReformContext.Consumer>
       {({onSubmit}) => (
-        <form onSubmit={onSubmit} {...props}>
+        <Component onSubmit={onSubmit} {...props}>
           {children}
-        </form>
+        </Component>
       )}
     </ReformContext.Consumer>
   );
