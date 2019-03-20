@@ -26,6 +26,10 @@ function getValue(target) {
   return type === 'checkbox' ? target.checked && value : value;
 }
 
+function defaultResetValues(initialState) {
+  return initialState;
+}
+
 class Reform extends Component {
   state = {
     errors: {},
@@ -61,10 +65,12 @@ class Reform extends Component {
   }
 
   resetForm() {
+    const initialState = getInitialState(this.props);
+    const resetValues = this.props.resetValues || defaultResetValues;
     this.setState({
       errors: {},
       isSubmitting: false,
-      values: getInitialState(this.props)
+      values: resetValues(initialState)
     });
   }
 
