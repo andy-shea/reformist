@@ -34,7 +34,7 @@ class Reform extends Component {
   state = {
     errors: {},
     isSubmitting: false,
-    values: getInitialState(this.props)
+    values: getInitialState(this.props),
   };
 
   constructor(props) {
@@ -70,15 +70,15 @@ class Reform extends Component {
     this.setState({
       errors: {},
       isSubmitting: false,
-      values: resetValues(initialState)
+      values: resetValues(initialState),
     });
   }
 
   onSubmit(event) {
     event.preventDefault();
     const {isSubmitting, values} = this.state;
-    this.setSubmitting(true);
-    const {submitForm, ...props} = this.props;
+    const {submitForm, autoSetSubmittingState = true, ...props} = this.props;
+    if (autoSetSubmittingState) this.setSubmitting(true);
     submitForm(
       {
         isSubmitting,
@@ -86,7 +86,7 @@ class Reform extends Component {
         setErrors: this.setErrors,
         setSubmitting: this.setSubmitting,
         resetForm: this.resetForm,
-        ...props
+        ...props,
       },
       findForm(event.target)
     );
@@ -111,7 +111,7 @@ class Reform extends Component {
       resetForm: this.resetForm,
       onSubmit: this.onSubmit,
       onChange: this.onChange,
-      ...otherProps
+      ...otherProps,
     };
 
     return (
