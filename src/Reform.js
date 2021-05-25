@@ -50,12 +50,12 @@ class Reform extends Component {
 
   updateValues(values) {
     this.setState({values});
-    if (this.props.onUpdate) this.props.onUpdate(values);
+    if (this.props.onUpdate) this.props.onUpdate(values, this.updateValues);
   }
 
   updateValue(name, value) {
     this.setState(({values}) => ({values: {...values, [name]: value}}));
-    if (this.props.onUpdate) this.props.onUpdate({[name]: value});
+    if (this.props.onUpdate) this.props.onUpdate({[name]: value}, this.updateValues);
   }
 
   setErrors(errors) {
