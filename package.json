@@ -2,7 +2,7 @@
   "name": "reformist",
   "description": "Evolutionary form management",
   "author": "Andy Shea <aa.shea@gmail.com>",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "license": "MIT",
   "main": "lib/index.js",
   "browserslist": [
