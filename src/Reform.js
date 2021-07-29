@@ -40,6 +40,7 @@ class Reform extends Component {
   constructor(props) {
     super(props);
     this.updateValues = this.updateValues.bind(this);
+    this.updateValuesWithoutCallback = this.updateValuesWithoutCallback.bind(this);
     this.updateValue = this.updateValue.bind(this);
     this.setErrors = this.setErrors.bind(this);
     this.setSubmitting = this.setSubmitting.bind(this);
@@ -48,13 +49,17 @@ class Reform extends Component {
     this.onChange = this.onChange.bind(this);
   }
 
+  updateValuesWithoutCallback(values) {
+    this.setState({values});
+  }
+
   updateValues(values) {
     this.setState({values}, () => {
       if (this.props.onUpdate) {
         this.props.onUpdate({
           updatedValues: values,
           values: this.state.values,
-          updateValues: this.updateValues,
+          updateValues: this.updateValuesWithoutCallback
         });
       }
     });
@@ -68,7 +73,7 @@ class Reform extends Component {
           this.props.onUpdate({
             updatedValues: {[name]: value},
             values: this.state.values,
-            updateValues: this.updateValues,
+            updateValues: this.updateValuesWithoutCallback
           });
         }
       }
