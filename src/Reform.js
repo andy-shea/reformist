@@ -100,6 +100,7 @@ class Reform extends Component {
 
   onSubmit(event) {
     event.preventDefault();
+    event.stopPropagation();
     const {isSubmitting, values} = this.state;
     const {submitForm, autoSetSubmittingState = true, ...props} = this.props;
     if (autoSetSubmittingState) this.setSubmitting(true);
